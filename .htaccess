@@ -1,0 +1,13 @@
+# Yönlendirmeleri aktif eder
+RewriteEngine on
+
+# Yeni bir yönlendirme kuralı ekliyoruz
+RewriteRule ^([0-9a-zA-Z-_]+)/([0-9]+)$  blog.php?title=$1&no=$2 [L,QSA]
+
+# Uzantıyı kaldırıyoruz
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L] 
+
+# Dosya adını değiştiriyoruz
+DirectoryIndex index.php anasayfa.php
